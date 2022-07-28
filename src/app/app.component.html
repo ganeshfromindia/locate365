@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6"><label>State</label></div>
+    <div class="col-md-6">
+      <div  title="Please select the State">
+        <select (change)="fetchCity($event)">
+            <option *ngFor ="let state of StateList">{{state.stateName}} </option>
+        </select>
+    </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6"><label>Cities</label></div>
+    <div class="col-md-6">
+      <div  title="Please select the City">
+        <select >
+            <option *ngFor ="let city of AllCities">{{city.name}} </option>
+        </select>
+    </div>
+    </div>
+  </div>
+  <form [formGroup]="form" class="mt-5" (ngSubmit)="onSubmit()">
+    <div class="row mt-5">
+      <div class="col-md-6"><label>From Date</label>
+        <input formControlName="fromDate" id="date" type="date" [max]="getToday()" />
+      </div>
+      <div class="col-md-6"><label>From Date</label>
+        <input formControlName="toDate" id="date" type="date" />
+        <p>{{error}}</p>
+      </div>
+    </div>
+    <button type="submit" >Submit</button>
+  </form>
+</div>
+
+
