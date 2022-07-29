@@ -24,8 +24,8 @@
       <div class="col-md-6"><label>From Date</label>
         <input formControlName="fromDate" id="date" type="date" [max]="getToday()" />
       </div>
-      <div class="col-md-6"><label>From Date</label>
-        <input formControlName="toDate" id="date" type="date" />
+      <div class="col-md-6"><label>To Date</label>
+        <input formControlName="toDate" id="date" type="date" [min]="getToday()"/>
         <p>{{error}}</p>
       </div>
     </div>
