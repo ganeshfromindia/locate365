@@ -1,35 +1,40 @@
 <div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-6"><label>State</label></div>
-    <div class="col-md-6">
-      <div  title="Please select the State">
-        <select (change)="fetchCity($event)">
-            <option *ngFor ="let state of StateList">{{state.stateName}} </option>
-        </select>
-    </div>
-    </div>
-  </div>
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-6"><label>Cities</label></div>
-    <div class="col-md-6">
-      <div  title="Please select the City">
-        <select >
-            <option *ngFor ="let city of AllCities">{{city.name}} </option>
-        </select>
-    </div>
-    </div>
-  </div>
-  <form [formGroup]="form" class="mt-5" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" class="pt-5 pb-5 mt-5" (ngSubmit)="onSubmit()">
     <div class="row mt-5">
-      <div class="col-md-6"><label>From Date</label>
-        <input formControlName="fromDate" id="date" type="date" [max]="getToday()" />
+      <div class="offset-md-3 col-md-3"><label>Selected State</label></div>
+      <div class="col-md-3">
+        <div  title="Please select the State">
+          <select (change)="fetchCity($event)" formControlName="state">
+              <option *ngFor ="let state of StateList">{{state.stateName}} </option>
+          </select>
+        </div>
       </div>
-      <div class="col-md-6"><label>To Date</label>
-        <input formControlName="toDate" id="date" type="date" [min]="getToday()"/>
-        <p>{{error}}</p>
+      <div class="col-md-5"></div>
+    </div>
+    <div class="row mt-5" *ngIf="showCities">
+      <div class="offset-md-3 col-md-3"><label>Selected City</label></div>
+      <div class="col-md-3">
+        <div  title="Please select the City">
+          <select formControlName="city">
+              <option *ngFor ="let city of Cities">{{city.name}} </option>
+          </select>
+        </div>
+        <div class="col-md-5"></div>
       </div>
     </div>
-    <button type="submit" >Submit</button>
+    <div class="row mt-5">
+      <div class="offset-md-3 col-md-3"><label class="pe-2">From Date</label>
+        <input formControlName="fromDate" id="date" type="date" [max]="getToday()" (change)="setToDate($event)"/>
+      </div>
+      <div class="col-md-3 pe-2"><label class="pe-2">To Date</label>
+        <input formControlName="toDate" id="date" type="date" [min]="minDate"/>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="offset-md-5 col-md-2">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+    </div>
   </form>
 </div>
 
