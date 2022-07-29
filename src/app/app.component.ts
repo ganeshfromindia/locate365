@@ -24,13 +24,14 @@ export class AppComponent {
   
 
   StateList: StateRef[] = [
+    {stateName: 'Select State', cities: [{ name:'' }]},
     {
       stateName: 'Maharashtra',
-      cities: [{ name:"Select City"}, {name: 'Mumbai' }, { name: 'Pune' }],
+      cities: [{ name:"Select City"}, {name: 'Mumbai' }, { name: 'Pune' }]
     },
     {
       stateName: 'Gujarat',
-      cities: [{ name:"Select City"}, { name: 'Ahmedabad' }, { name: 'Baroda' }],
+      cities: [{ name:"Select City"}, { name: 'Ahmedabad' }, { name: 'Baroda' }]
     },
   ];
 
